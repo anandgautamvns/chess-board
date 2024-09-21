@@ -1,10 +1,10 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
-import { observe } from './pages/utils';
+import './index.css';
 import { knightPositionAxis } from './pages/type';
+import { observe } from './pages/utils';
+import reportWebVitals from './reportWebVitals';
 
 
 const root = ReactDOM.createRoot(
