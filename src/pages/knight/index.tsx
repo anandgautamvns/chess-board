@@ -1,11 +1,13 @@
-import React from 'react'
-import { DragPreviewImage, useDrag } from 'react-dnd'
-import { ItemTypes, knightImage } from '../constant'
-import styles from './index.module.scss'
+import React from "react";
+import DraggableComponent from "../../dnd/draggable";
+import { ItemTypes } from "../constant";
+import styles from "./index.module.scss";
+const type = ItemTypes.KNIGHT;
+const item = {};
 
-type Props = {}
+type Props = {};
 
-const Knight: React.FC<Props> = (props) => {
+/* const Knight1: React.FC<Props> = (props) => {
   const [{ isDragging }, drag, preview] = useDrag(() => ({
     type: ItemTypes.KNIGHT,
     collect: (monitor) => ({
@@ -27,6 +29,17 @@ const Knight: React.FC<Props> = (props) => {
       </div>
     </>
   )
-}
+} */
 
-export default Knight
+const Knight: React.FC<Props> = (props) => {
+  return (
+    <div>
+      {/* <DragPreviewImage connect={preview} src={knightImage} /> */}
+      <div className={styles.knightContainer}> ♘ </div>
+    </div>
+  );
+};
+const draggable = DraggableComponent(Knight, { item, type });
+// export default DraggableComponent<TaskCardProps>(TaskCard, { id, type });
+
+export default draggable;

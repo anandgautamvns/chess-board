@@ -1,11 +1,17 @@
 import React from 'react';
-import { DragPreviewImage } from 'react-dnd';
-import withDraggable from './index';
+import { DragPreviewImage, useDrag } from 'react-dnd';
 
 const House: React.FC<{ connectDragSource: any; connectDragPreview: any }> = ({
   connectDragSource,
   connectDragPreview,
 }) => {
+  const [{ isDragging }, drag, preview] = useDrag({
+    type: 'house',
+    item: { name: 'house' },
+    collect: (monitor) => ({
+      isDragging: monitor.isDragging(),
+    }),
+  });
   return (
     <>
       <DragPreviewImage src="house_dragged.png" connect={connectDragPreview} />
@@ -14,4 +20,7 @@ const House: React.FC<{ connectDragSource: any; connectDragPreview: any }> = ({
   );
 };
 
-export default withDraggable(House, 'HOUSE');
+
+
+
+

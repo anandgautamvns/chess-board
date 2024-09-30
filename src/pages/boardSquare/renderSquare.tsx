@@ -1,9 +1,9 @@
-import React from "react"
+import React from "react";
 import Knight from "../knight";
 // import Square from ".";
+import Square from "../square";
 import { knightPositionAxis } from "../type";
 import { canMoveKnight, moveKnight } from "../utils";
-import Square from "../square";
 
 interface Props {
   i: number,
@@ -18,7 +18,7 @@ const RenderSquare: React.FC<Props> = (props) => {
   const y = Math.floor(i / 8)
   const isKnightHere = x === knightX && y === knightY
   const black = (x + y) % 2 === 1
-  const piece = isKnightHere ? <Knight /> : null
+  const piece = isKnightHere ? <Knight item={undefined} type={""} /> : null
 
   const handleSquareClick = (toX: number, toY: number) => {
     if (canMoveKnight(toX, toY)) {

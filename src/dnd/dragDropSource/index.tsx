@@ -1,12 +1,13 @@
 import React from 'react';
-import { ConnectDragPreview, ConnectDragSource, DragSource, DragSourceMonitor } from 'react-dnd';
+import { ConnectDragPreview, ConnectDragSource } from 'react-dnd';
 
 interface WithDraggableProps {
   connectDragSource: ConnectDragSource;
   connectDragPreview: ConnectDragPreview;
+  isDragging: boolean;
 }
 
-const withDraggable = <P extends Record<string, unknown>>(
+/* const withDraggable = <P extends Record<string, unknown>>(
   WrappedComponent: React.ComponentType<P & WithDraggableProps>,
   type: string,
 ) => {
@@ -31,6 +32,31 @@ const withDraggable = <P extends Record<string, unknown>>(
   };
 
   return Draggable;
-};
+}; */
+
+const withDraggable = <P extends Record<string, unknown>>(
+  WrappedComponent: React.ComponentType<P & WithDraggableProps>,
+  type: string,
+) => {
+  const Draggable: React.FC<WithDraggableProps> = ({ connectDragSource, connectDragPreview, isDragging,...props }) => {
+    return (
+      <div>
+        {connectDragSource(
+          <div {...props}>
+            Draggable Component
+          </div>
+        )}
+        {connectDragPreview(
+          <div style={{ opacity: isDragging? 0.5 : 1 }}>
+            Dragging Preview
+          </div>
+        )}
+      </div>
+    )
+  }
+
+  return Draggable;
+  
+}
 
 export default withDraggable;

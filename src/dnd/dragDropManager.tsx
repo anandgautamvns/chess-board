@@ -1,8 +1,8 @@
 import React from "react";
-import { DragDropManager, useDragDropManager } from "react-dnd";
+import { useDragDropManager } from "react-dnd";
 
 interface WithDragDropManagerProps {
-  dragDropManager: DragDropManager;
+  dragDropManager: any; //DragDropManager;
 }
 
 const DragDropManagerComponent = <P extends Record<string, unknown>>(

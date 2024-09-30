@@ -1,6 +1,5 @@
-import React from "react"
-import { knightPositionAxis } from "../type"
 import Knight from "../knight";
+import { knightPositionAxis } from "../type";
 
 interface Props {
   x: number,
@@ -12,6 +11,6 @@ export const renderPiece = (props: Props) => {
   const { x, y, knightPosition } = props;
   const [knightX, knightY] = knightPosition
   if (x === knightX && y === knightY) {
-    return <Knight />
+    return <Knight item={undefined} type={""} />
   }
 }

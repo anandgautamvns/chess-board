@@ -1,4 +1,4 @@
-{
+/* {
   "compilerOptions": {
     "target": "es5",
     "lib": [
@@ -22,5 +22,38 @@
   },
   "include": [
     "src"
+  ]
+}
+ */
+
+ {
+  "compilerOptions": {
+    "target": "es5", // Consider changing to "esnext" for modern features if your environment supports it.
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true, // Allowing JavaScript files is fine if you have JS files; otherwise, set to false.
+    "skipLibCheck": true, // This is generally a good practice to speed up compilation.
+    "esModuleInterop": true, // Allows for better compatibility with CommonJS modules.
+    "allowSyntheticDefaultImports": true, // Useful for importing modules with default exports.
+    "strict": true, // This enables all strict type-checking options. Keep this for better type safety.
+    "forceConsistentCasingInFileNames": true, // Ensures consistent casing in imports.
+    "noFallthroughCasesInSwitch": true, // Good practice to prevent fall-through in switch statements.
+    "module": "esnext", // Using "esnext" for modern module syntax is recommended.
+    "moduleResolution": "node", // Correct module resolution for Node.js-style imports.
+    "resolveJsonModule": true, // Allows importing JSON files as modules.
+    "isolatedModules": true, // Useful for compatibility with Babel or other transpilers.
+    "noEmit": true, // Prevents emitting files, which is good for just type-checking.
+    "jsx": "react-jsx" // Correct setting for React 17+ with new JSX transform.
+  },
+  "include": [
+    "src" // Ensure this matches the root directory of your source files.
+  ],
+  "exclude": [
+    "node_modules", // It's a good practice to exclude node_modules.
+    "**/*.spec.ts", // Optionally exclude test files if not needed during compilation.
+    "**/*.test.tsx" // Optionally exclude test files if not needed during compilation.
   ]
 }

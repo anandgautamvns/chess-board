@@ -1,8 +1,10 @@
 import React from 'react';
 import { DropTargetMonitor, useDrop } from 'react-dnd';
+import Overlay from '../pages/boardSquare/overlay';
 
 interface DroppableProps {
   accept: string | string[];
+  item: unknown
 }
 
 const DroppableComponent = <P extends Record<string, unknown>>(
@@ -17,7 +19,7 @@ const DroppableComponent = <P extends Record<string, unknown>>(
       accept,
       drop: (item, monitor) => {
         // Handle drop logic here if needed
-        console.log('Item dropped:', item);
+        console.log('Item dropped:', {item, monitor});
       },
       collect: (monitor: DropTargetMonitor) => ({
         isOver: monitor.isOver(),
@@ -28,7 +30,10 @@ const DroppableComponent = <P extends Record<string, unknown>>(
     return (
       <div ref={drop} style={{ position: 'relative' }}>
         <WrappedComponent {...(props as any)} />
-        {isOver && canDrop && <div style={{ position: 'absolute', top: 0, left: 0 }}>Drop here!</div>}
+        {/* {isOver && canDrop && <div style={{ position: 'absolute', top: 0, left: 0 }}>Drop here!</div>} */}
+        {isOver && !canDrop && <Overlay color="red" />}
+        {!isOver && canDrop && <Overlay color="yellow" />}
+        {isOver && canDrop && <Overlay color="green" />}
       </div>
     );
   };
