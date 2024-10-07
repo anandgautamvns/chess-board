@@ -1,3 +1,4 @@
+import { ItemTypes } from "../constant";
 import Knight from "../knight";
 import { knightPositionAxis } from "../type";
 
@@ -11,6 +12,6 @@ export const renderPiece = (props: Props) => {
   const { x, y, knightPosition } = props;
   const [knightX, knightY] = knightPosition
   if (x === knightX && y === knightY) {
-    return <Knight item={undefined} type={""} />
+    return <Knight item={undefined} type={ItemTypes.KNIGHT} />
   }
 }

@@ -1,6 +1,10 @@
 import React from 'react';
-import DroppableComponent from '../../dnd/droppable';
+// import DroppableComponent from '../../dnd/droppable';
 import Square from '../square';
+import { useDrop } from 'react-dnd';
+import { ItemTypes } from '../constant';
+import { canMoveKnight, moveKnight } from '../utils';
+import Overlay from './overlay';
 
 interface Props {
   // black: boolean;
@@ -9,7 +13,7 @@ interface Props {
   children: React.ReactNode
 }
 
-/* const BoardSquare1: React.FC<Props> = (props) => {
+const BoardSquare: React.FC<Props> = (props) => {
   const { x, y, children } = props
   const black = (x + y) % 2 === 1
 
@@ -41,9 +45,11 @@ interface Props {
       {isOver && canDrop && <Overlay color="green" />}
     </div >
   )
-} */
+}
 
-const BoardSquare: React.FC<Props> = (props) => {
+export default BoardSquare
+
+/* const BoardSquare: React.FC<Props> = (props) => {
   const { x, y, children } = props
   const black = (x + y) % 2 === 1
   return (
@@ -53,4 +59,4 @@ const BoardSquare: React.FC<Props> = (props) => {
 
 const droppable  = DroppableComponent<any>(BoardSquare)
 
-export default droppable
+export default droppable */

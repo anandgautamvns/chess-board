@@ -1,15 +1,18 @@
 import React from "react";
-import DraggableComponent from "../../dnd/draggable";
-import { ItemTypes } from "../constant";
+// import DraggableComponent from "../../dnd/draggable";
+// import { ItemTypes, knightImage } from "../constant";
 import styles from "./index.module.scss";
-const type = ItemTypes.KNIGHT;
-const item = {};
+// import { DragPreviewImage, useDrag } from "react-dnd";
+import withDraggable from "../../dnd-lib/draggable";
 
-type Props = {};
+type Props = {
+  item: any; type: string
+};
 
-/* const Knight1: React.FC<Props> = (props) => {
+/* const Knight: React.FC<Props> = (props) => {
+  const { item, type } = props;
   const [{ isDragging }, drag, preview] = useDrag(() => ({
-    type: ItemTypes.KNIGHT,
+    type: type,
     collect: (monitor) => ({
       isDragging: !!monitor.isDragging()
     })
@@ -29,17 +32,19 @@ type Props = {};
       </div>
     </>
   )
-} */
+}
+
+export default Knight; */
 
 const Knight: React.FC<Props> = (props) => {
+  const { item, type } = props;
   return (
     <div>
       {/* <DragPreviewImage connect={preview} src={knightImage} /> */}
       <div className={styles.knightContainer}> ♘ </div>
     </div>
-  );
-};
-const draggable = DraggableComponent(Knight, { item, type });
-// export default DraggableComponent<TaskCardProps>(TaskCard, { id, type });
+  )
+}
 
-export default draggable;
+const DraggableMyComponent = withDraggable(Knight)
+export default DraggableMyComponent;
